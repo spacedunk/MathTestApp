@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+	function getHi() {
+		var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHi").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", "http://localhost/ExamPOC.php", true);
+        xmlhttp.send();
+	}
+</script>
+
+<button type="button" onclick="getHi()">Test</button>
+
+<div id="txtHi"></div>
+
+</body>
+</html>
