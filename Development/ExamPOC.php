@@ -3,7 +3,7 @@
 include "MathPOC_DB.php";
 include "TableRows.php";
 
-echo "<table style='border: solid 1px black;'>";
+echo "<table class='table'>";
 echo "<tr><th>UserID</th><th>Firstname</th><th>Lastname</th></tr>";
 
 $connInfo = simplexml_load_file('ConnectionInfo.xml');
