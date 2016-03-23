@@ -18,5 +18,4 @@ class TableRows extends RecursiveIteratorIterator {
          echo "</tr>" . "\n";
      } 
 }
-
 ?>
