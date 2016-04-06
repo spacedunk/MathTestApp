@@ -15,6 +15,7 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("txtHi").innerHTML = xmlhttp.responseText;
+                    document.getElementById("btnPDF").classList.remove('disabled');
                 }
             };
             xmlhttp.open("GET", "ExamPOC.php", true);
@@ -26,12 +27,34 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-primary btn-block" onclick="getHi()">Test</button>
+            <button type="button" class="btn btn-primary btn-block" onclick="getHi()">Get Users</button>
         </div>
     </div>
     <div class="row">
             <div id="txtHi"class="col-md-12 "></div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button id="btnPDF"type="button" class="btn btn-primary btn-block disabled" data-toggle="modal" data-target="#exportModal">Export to PDF</button>
+        </div>
+    </div>
+</div>
+
+<div id="exportModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Export to PDF</h4>
+           </div>
+           <div class="modal-body">
+              <p>Are you sure you want to export this exam to a PDF?</p> 
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           </div>
+       </div>
+   </div> 
 </div>
 </body>
 </html>
