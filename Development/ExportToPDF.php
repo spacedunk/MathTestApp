@@ -31,18 +31,16 @@ function DOMPDF_ExportToPDF($fpath)
 	$dompdf->render();
 
 	// Output the generated PDF to Browser
-	//$dompdf->stream("sample.pdf");
+	$dompdf->stream("sample.pdf");
 
-	$output = $dompdf->output();
+	//$output = $dompdf->output();
 
-	file_put_contents("sample.pdf", $output);
+	//file_put_contents("sample.pdf", $output);
 
-    //header('Content-Type: application/pdf');
-	header('Content-Disposition: attachment; filename="SampleTest.pdf"');
-	echo "http://localhost/sample.pdf";
+	//echo "http://localhost/sample.pdf";
 }
 
 
 //Prince_ExportToPDF("SampleTest.html");
-DOMPDF_ExportToPDF("ExamPOC.html");
+DOMPDF_ExportToPDF("MathMLPOC.html");
 ?>
