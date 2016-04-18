@@ -1,16 +1,19 @@
 $(document).ready(function(){
     $("#GetUsers").click(function(){
-        $.get("ExamPOC.php", function(data, status){
+        $.post("ExamPOC.php",
+        {
+            F: "GetUsers"
+        },
+        function(data, status)
+        {
             $("#txtHi").html(data);
             $("#btnPDF").removeClass("disabled");
-        });
+        }
+        );
     });
-    $("#GetExport").click(function(){
-       /*$.get("ExportToPDF.php",function(data,status){
-            window.open(data);
-       });*/
-
-       getPDF(); 
+    $("#GetExport").click(function()
+    {
+        getPDF();
     });
 });
 
