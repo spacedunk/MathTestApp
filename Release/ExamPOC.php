@@ -26,6 +26,16 @@ class ExamPOC
 	}
 }
 
-ExamPOC::GetUsers();
+$a = $_REQUEST["F"];
 
+switch ($a)
+{
+	case 'GetUsers':
+		ExamPOC::GetUsers();
+		break;
+	
+	default:
+		echo "Function Not Found";
+		break;
+}
 ?>
