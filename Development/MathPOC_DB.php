@@ -58,8 +58,11 @@ class MathPOC_DB
 
 		return null;
 	}
-};
+};	
 
+	
+$connInfo = simplexml_load_file('ConnectionInfo.xml');
 
+$GLOBALS['MathDB'] = new MathPOC_DB($connInfo->Servername,$connInfo->DBName,$connInfo->UserName,$connInfo->Password);
 
 ?>
