@@ -1,7 +1,7 @@
 <?php
 
-include "MathPOC_DB.php";
-include "TableRows.php";
+require_once "MathPOC_DB.php";
+require_once "TableRows.php";
 
 
 class Users
