@@ -29,12 +29,16 @@
             <textarea class="form-control" id="desc" rows="5"></textarea> 
           </div>
           <label class="radio-inline">
-            <input type="radio" name="type">Image
+            <input type="radio" name="type" class="type" value="Image">Image
           </label>
           <label class="radio-inline">
-            <input type="radio" name="type">Text
+            <input type="radio" name="type" class="type" value="Text">Text
           </label>
-          <div class="form-group">
+          <div class="form-group" id="imageDiv">
+            <label for="imageFile">Select image to upload:</label>
+            <input type="file" name="imageFile" id="imageFile">
+          </div>
+          <div class="form-group" id="textDiv">
             <label for="text">Text:</label>
             <textarea class="form-control" id="text" rows="5"></textarea> 
           </div>

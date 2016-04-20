@@ -3,7 +3,7 @@ $(document).ready(function(){
         $.post("ExamPOC.php",
         {
             F: "CreateQuestion",
-            Type: $("#type").val(),
+            Type: $(".type").val(),
             Title: $("#title").val(),
             Description: $("#desc").val(),
             Text: $("#text").val(),
@@ -14,5 +14,19 @@ $(document).ready(function(){
             $("#txtExport").html("<p>Question Added Successfully</p>");
         }
         );
+    });
+    $("#imageDiv").hide();
+    $("#textDiv").hide();
+    $(".type").change(function(){
+        if($(this).val() == "Image")
+        {
+            $("#imageDiv").show();
+            $("#textDiv").hide();
+        }
+        if($(this).val() == "Text")
+        {
+            $("#imageDiv").hide();
+            $("#textDiv").show();
+        }  
     });
 });
