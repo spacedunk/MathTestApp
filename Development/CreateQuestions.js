@@ -1,5 +1,22 @@
 $(document).ready(function(){
     $("#CreateQuestion").click(function(){
+        var data = new FormData();
+        data.append('fileImage',document.getElementById('imageFile').files[0]);
+        data.append('Title',$("#title").val());
+        $.ajax(
+        {   
+            url: 'FileUpload.php',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(data){
+                alert(data);
+            }
+        }
+ 
+        );
         $.post("ExamPOC.php",
         {
             F: "CreateQuestion",
@@ -11,7 +28,7 @@ $(document).ready(function(){
         },
         function(data, status)
         {
-            $("#txtExport").html("<p>Question Added Successfully</p>");
+            $("#txtQuestion").html("<p>Question Added Successfully</p>");
         }
         );
     });

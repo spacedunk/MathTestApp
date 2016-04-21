@@ -19,13 +19,13 @@ class Questions
 	public static function CreateQuestion()
 	{
 		//Add proper parameterization
-		$type 			= $_REQUEST["Type"];
-		$title 			= $_REQUEST["Title"];
-		//$author 		= $_REQUEST["Author"];
+		$type 			= $_POST["Type"];
+		$title 			= $_POST["Title"];
+		//$author 		= $_POST["Author"];
 		$author = 1;
-		$description 	= $_REQUEST["Description"];
-		$text 			= $_REQUEST["Text"];
-		$answer			= $_REQUEST["Answer"];
+		$description 	= $_POST["Description"];
+		$text 			= $_POST["Text"];
+		$answer			= $_POST["Answer"];
 
 
 		$results = $GLOBALS['MathDB']->ExecuteQuery("CALL Question_Insert('$type','$title','$author','$description','$text','$answer');");
