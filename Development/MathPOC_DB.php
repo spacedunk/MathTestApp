@@ -61,7 +61,7 @@ class MathPOC_DB
 };	
 
 	
-$connInfo = simplexml_load_file('ConnectionInfo.xml');
+$connInfo = simplexml_load_file('config.xml');
 
 $GLOBALS['MathDB'] = new MathPOC_DB($connInfo->Servername,$connInfo->DBName,$connInfo->UserName,$connInfo->Password);
 

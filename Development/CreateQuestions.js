@@ -3,9 +3,10 @@ $(document).ready(function(){
         var data = new FormData();
         data.append('fileImage',document.getElementById('imageFile').files[0]);
         data.append('Title',$("#title").val());
+        data.append('F',"UploadImage");
         $.ajax(
         {   
-            url: 'FileUpload.php',
+            url: "ExamPOC.php",
             data: data,
             cache: false,
             contentType: false,
