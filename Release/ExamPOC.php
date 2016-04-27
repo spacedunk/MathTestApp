@@ -1,39 +1,28 @@
 <?php
 
-include "MathPOC_DB.php";
-include "TableRows.php";
+require_once "MathPOC_DB.php";
+require_once "Users.php";
+require_once "Questions.php";
+require_once "Tests.php";
+require_once 'ImageUploader.php';
 
-
-class ExamPOC
-{
-	public static function GetUsers()
-	{
-		echo "<table class='table'>";
-		echo "<tr><th>UserID</th><th>Firstname</th><th>Lastname</th></tr>";
-
-		$connInfo = simplexml_load_file('ConnectionInfo.xml');
-
-		$MathPOC = new MathPOC_DB($connInfo->Servername,$connInfo->DBName,$connInfo->UserName,$connInfo->Password);
-
-		$results = $MathPOC->ExecuteQuery("SELECT UserID, First,Last from TestTable");
-
-		foreach (new TableRows(new RecursiveArrayIterator($results)) as $key => $value) 
-		{
-			echo $value;
-		}
-
-		echo "</table>";
-	}
-}
-
-$a = $_REQUEST["F"];
+$a = $_POST['F'];
 
 switch ($a)
 {
 	case 'GetUsers':
-		ExamPOC::GetUsers();
+		Users::GetUsers();
 		break;
-	
+	case 'CreateQuestion':
+		Questions::CreateQuestion();
+		break;
+	case 'UploadImage':
+		$image = new ImageUploader($_POST["Title"], $_FILES["fileImage"]);
+		$image->UploadImage();
+		break;
+	case 'CreateTest':
+		Tests::CreateTest();
+		break;
 	default:
 		echo "Function Not Found";
 		break;

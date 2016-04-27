@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<FileConfig>
+		<FileDirectory>Images</FileDirectory>
+	</FileConfig>
+	<ImageTypes>
+		<ImageType>jpg</ImageType>
+		<ImageType>png</ImageType>
+		<ImageType>jpeg</ImageType>
+		<ImageType>gif</ImageType>
+	</ImageTypes>
+	<FileSizeLimit>500000</FileSizeLimit>
+</Config>
