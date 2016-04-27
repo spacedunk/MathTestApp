@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $("#CreateQuestion").click(function(){
+        $("#txtQuestion").html("");
         var data = new FormData();
         data.append('fileImage',document.getElementById('imageFile').files[0]);
         data.append('Title',$("#title").val());
@@ -12,25 +13,24 @@ $(document).ready(function(){
             contentType: false,
             processData: false,
             type: 'POST',
-            success: function(data){
-                alert(data);
+            success: function(data)
+            {
+                $.post("ExamPOC.php",
+                {
+                    F: "CreateQuestion",
+                    Type: $(".type").val(),
+                    Title: $("#title").val(),
+                    Description: $("#desc").val(),
+                    Text: $("#text").val(),
+                    Answer: $("#answer").val()
+                },
+                function(data, status)
+                {
+                    $("#txtQuestion").html("<p>Question Added Successfully</p>");
+                });
             }
         }
  
-        );
-        $.post("ExamPOC.php",
-        {
-            F: "CreateQuestion",
-            Type: $(".type").val(),
-            Title: $("#title").val(),
-            Description: $("#desc").val(),
-            Text: $("#text").val(),
-            Answer: $("#answer").val()
-        },
-        function(data, status)
-        {
-            $("#txtQuestion").html("<p>Question Added Successfully</p>");
-        }
         );
     });
     $("#imageDiv").hide();

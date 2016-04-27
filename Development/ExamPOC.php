@@ -3,6 +3,7 @@
 require_once "MathPOC_DB.php";
 require_once "Users.php";
 require_once "Questions.php";
+require_once "Tests.php";
 require_once 'ImageUploader.php';
 
 $a = $_POST['F'];
@@ -18,6 +19,9 @@ switch ($a)
 	case 'UploadImage':
 		$image = new ImageUploader($_POST["Title"], $_FILES["fileImage"]);
 		$image->UploadImage();
+		break;
+	case 'CreateTest':
+		Tests::CreateTest();
 		break;
 	default:
 		echo "Function Not Found";
