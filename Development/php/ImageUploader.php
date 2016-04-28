@@ -11,8 +11,8 @@ class ImageUploader
 
 	public function __construct($filename,$fileObject)
 	{
-		$this->config 			= simplexml_load_file("ImageUploader.xml");
-		$this->target_dir 		= $this->config->FileConfig->FileDirectory . "/";
+		$this->config 			= simplexml_load_file(dirname(__DIR__)."/config/ImageUploader.xml");
+		$this->target_dir 		= dirname(__DIR__) . "/" . $this->config->FileConfig->FileDirectory . "/";
 		$this->target_file 		= $this->target_dir . $filename;
 		$this->file 			= $fileObject;
 		$this->imageFileType 	= pathinfo($target_dir . basename($file["name"]),PATHINFO_EXTENSION);

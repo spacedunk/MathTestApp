@@ -1,22 +1,5 @@
 <?php 
-include "/home/ekeehn/Code Work/MathTestApp/POC/Source/Development/prince-php5-r15/prince.php";
-require_once("/home/ekeehn/Code Work/MathTestApp/POC/Source/Development/dompdf/autoload.inc.php");
 use Dompdf\Dompdf;
-
-function main()
-{
-	return "Hi";
-}
-
-function Prince_ExportToPDF($fpath)
-{
-	$prince = new Prince('/usr/bin/prince');
-
-	$prince->addStyleSheet("/bootstrap-.3.3.6/css/bootstrap.min.css");
-	$prince->setHTML(1);
-
-	$prince->convert_file_to_passthru($fpath);
-}
 
 function DOMPDF_ExportToPDF($fpath)
 {

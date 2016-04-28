@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#GetUsers").click(function(){
-        $.post("ExamPOC.php",
+        $.post("http://localhost/php/ExamPOC.php",
         {
             F: "GetUsers"
         },
@@ -22,7 +22,7 @@ var _AJAX_OK = 200;
 
 function getPDF(){
     var ajax = new XMLHttpRequest();
-    ajax.open("POST", "ExportToPDF.php", true);
+    ajax.open("POST", "http://localhost/php/ExamPOC.php", true);
     ajax.responseType = 'blob';
     ajax.onreadystatechange = function(){
         if(ajax.readyState === _AJAX_DONE){

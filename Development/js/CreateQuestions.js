@@ -7,7 +7,7 @@ $(document).ready(function(){
         data.append('F',"UploadImage");
         $.ajax(
         {   
-            url: "ExamPOC.php",
+            url: "http://localhost/php/ExamPOC.php",
             data: data,
             cache: false,
             contentType: false,
@@ -15,7 +15,7 @@ $(document).ready(function(){
             type: 'POST',
             success: function(data)
             {
-                $.post("ExamPOC.php",
+                $.post("http://localhost/php/ExamPOC.php",
                 {
                     F: "CreateQuestion",
                     Type: $(".type").val(),

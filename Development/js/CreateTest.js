@@ -2,7 +2,7 @@ $(document).ready(function(){
     $("#CreateTest").click(function()
     {
         $("#txtTest").html("");
-        $.post("ExamPOC.php",
+        $.post("http://localhost/php/ExamPOC.php",
         {
             F: "CreateTest",
             Title: $("#title").val(),
