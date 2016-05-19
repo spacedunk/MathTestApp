@@ -30,7 +30,7 @@ switch ($a)
 		Tests::CreateTest();
 		break;
 	case 'GetQuestions':
-		Questions::GetQuestions($_POST["TID"]);
+		echo Questions::GetQuestions($_POST["TID"]);
 		break;
 	default:
 		echo "Function Not Found";

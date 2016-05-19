@@ -11,10 +11,8 @@ class Questions
 
 		$json = '{ "questions":' . json_encode($results) . '}';
 
-		echo $json;
+		return $json;
 	}
-
-
 
 	public static function CreateQuestion()
 	{

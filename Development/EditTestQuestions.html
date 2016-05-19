@@ -27,12 +27,37 @@
       <label for="className">Class Name:</label><p id="className"></p>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div id="pnlQuestions" class="col-md-4">
           <div class="panel panel-default">
-            <div class="panel-heading">Questions:</div>
-            <div id="pnlQuestions" class="panel-body">
-              <ul>
-                <li ng-repeat="x in names">{{ x.ID +' , '+ x.Title+' , '+x.Description}}</li>
+            <div class="panel-heading">Available Questions:</div>
+            <div  class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="x in names">
+                  <div class="list-group-item-heading">
+                    <h4 name="Title">{{x.Title}}</h4>
+                  </div>
+                  <div class="list-group-item-text">
+                    <p name="Description">{{x.Description}}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div id="pnlMid" class="col-md-4"></div>
+      <div id="pnlTestQuestions"  class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">Test Questions:</div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="x in names">
+                  <div class="list-group-item-heading">
+                    <h4 name="Title">{{x.Title}}</h4>
+                  </div>
+                  <div class="list-group-item-text">
+                    <p name="Description">{{x.Description}}</p>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
