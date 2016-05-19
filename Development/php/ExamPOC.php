@@ -6,6 +6,12 @@ require_once "Questions.php";
 require_once "Tests.php";
 require_once 'ImageUploader.php';
 
+
+//Since Angular defaults to application/json
+if(isset($_SERVER["CONTENT_TYPE"]) && strpos($_SERVER["CONTENT_TYPE"], "application/json") !== false) {
+    $_POST = array_merge($_POST, (array) json_decode(trim(file_get_contents('php://input')), true));
+}
+
 $a = $_POST['F'];
 
 switch ($a)
@@ -22,6 +28,9 @@ switch ($a)
 		break;
 	case 'CreateTest':
 		Tests::CreateTest();
+		break;
+	case 'GetQuestions':
+		Questions::GetQuestions($_POST["TID"]);
 		break;
 	default:
 		echo "Function Not Found";
