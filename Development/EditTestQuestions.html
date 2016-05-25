@@ -46,8 +46,8 @@
             </div>
           </div>
       </div>
-      <div id="pnlMid" class="col-md-4"></div>
-      <div ng-controller="TestQuestionsController" id="pnlTestQuestions"  class="col-md-4">
+      <div id="pnlMid" class="col-md-2"></div>
+      <div ng-controller="TestQuestionsController" id="pnlTestQuestions"  class="col-md-6">
           <div class="panel panel-default">
             <div class="panel-heading">Test Questions:</div>
             <div class="panel-body">
@@ -59,6 +59,7 @@
                   </div>
                   <div class="list-group-item-text">
                     <p name="Description">{{x.Description}}</p>
+                    <img src={{x.Text}} class ="img-thumbnail img-responsive" alt={{x.Title}}>
                   </div>
                 </li>
                 

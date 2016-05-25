@@ -7,7 +7,7 @@ class Questions
 
 	public static function GetAllQuestions()
 	{
-		$results = $GLOBALS['MathDB']->ExecuteQuery("SELECT ID, Title,Description from Questions");
+		$results = $GLOBALS['MathDB']->ExecuteQuery("SELECT ID, Title,Description,Text from Questions");
 
 		$json = '{ "questions":' . json_encode($results) . '}';
 

@@ -46,7 +46,7 @@ CREATE PROCEDURE Get_Test_Questions
 	IN p_tid 			int(11)
 )
 BEGIN
-	SELECT QuestionNumber,Title,Description from Questions AS Q INNER JOIN TEST_QUESTIONS AS TQ ON TQ.Q_ID = Q.ID WHERE TQ.T_ID = p_tid; 
+	SELECT QuestionNumber,Title,Description,Text from Questions AS Q INNER JOIN TEST_QUESTIONS AS TQ ON TQ.Q_ID = Q.ID WHERE TQ.T_ID = p_tid; 
 END  //
 DELIMITER ;
 
