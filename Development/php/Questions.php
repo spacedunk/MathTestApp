@@ -5,7 +5,7 @@ require_once "MathPOC_DB.php";
 class Questions
 {
 
-	public static function GetQuestions($testid)
+	public static function GetAllQuestions()
 	{
 		$results = $GLOBALS['MathDB']->ExecuteQuery("SELECT ID, Title,Description from Questions");
 

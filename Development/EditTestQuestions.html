@@ -18,21 +18,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="libs/Sortable/Sortable.js"></script>
+    <script src="libs/Sortable/ng-sortable.js"></script>
 </head>
 <body>
   <script src="js/EditTestQuestions.js"></script>
-  <div class="container" id="testInfo" ng-app="EditQuestionsTest" ng-controller="EditTestQuestionsController"> 
+  <div class="container" id="testInfo" ng-app="EditQuestionsTest"> 
     <div class="row">
       <label for="testName">Test Name:</label><h1 id="testName"></h1>
       <label for="className">Class Name:</label><p id="className"></p>
     </div>
     <div class="row">
-      <div id="pnlQuestions" class="col-md-4">
+      <div ng-controller="QuestionsController" id="pnlQuestions" class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading">Available Questions:</div>
             <div  class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item" ng-repeat="x in names">
+              <ul ng-sortable="QuestionsConfig" class="list-group">
+                <li class="list-group-item" ng-repeat="x in questions">
                   <div class="list-group-item-heading">
                     <h4 name="Title">{{x.Title}}</h4>
                   </div>
@@ -45,19 +47,21 @@
           </div>
       </div>
       <div id="pnlMid" class="col-md-4"></div>
-      <div id="pnlTestQuestions"  class="col-md-4">
+      <div ng-controller="TestQuestionsController" id="pnlTestQuestions"  class="col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading">Test Questions:</div>
             <div class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item" ng-repeat="x in names">
+              <ul ng-sortable="TestQuestionsConfig" class="list-group">
+                <!---->
+                <li class="list-group-item" ng-repeat="x in testquestions">
                   <div class="list-group-item-heading">
-                    <h4 name="Title">{{x.Title}}</h4>
+                    <h4 name="Title">{{x.QuestionNumber + ': ' + x.Title}}</h4>
                   </div>
                   <div class="list-group-item-text">
                     <p name="Description">{{x.Description}}</p>
                   </div>
                 </li>
+                
               </ul>
             </div>
           </div>

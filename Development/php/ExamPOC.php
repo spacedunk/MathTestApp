@@ -3,6 +3,7 @@
 require_once "MathPOC_DB.php";
 require_once "Users.php";
 require_once "Questions.php";
+require_once "TestQuestions.php";
 require_once "Tests.php";
 require_once 'ImageUploader.php';
 
@@ -13,7 +14,7 @@ if(isset($_SERVER["CONTENT_TYPE"]) && strpos($_SERVER["CONTENT_TYPE"], "applicat
 }
 
 $a = $_POST['F'];
-
+//$a ="GetAllQuestions"; 
 switch ($a)
 {
 	case 'GetUsers':
@@ -29,8 +30,11 @@ switch ($a)
 	case 'CreateTest':
 		Tests::CreateTest();
 		break;
-	case 'GetQuestions':
-		echo Questions::GetQuestions($_POST["TID"]);
+	case 'GetAllQuestions':
+		echo Questions::GetAllQuestions();
+		break;
+	case 'GetTestQuestions':
+		echo TestQuestions::GetTestQuestions($_POST["TID"]);
 		break;
 	default:
 		echo "Function Not Found";

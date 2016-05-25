@@ -4,16 +4,14 @@ require_once "MathPOC_DB.php";
 
 class Tests
 {
-	public static function GetTests($testid)
+	public static function GetTests()
 	{
 
 		$results = $GLOBALS['MathDB']->ExecuteQuery("SELECT ID, Title,Description from Tests");
 
-		foreach (new TableRows(new RecursiveArrayIterator($results)) as $key => $value) 
-		{
-			echo $value;
-		}
+		$json = '{ "tests":' . json_encode($results) . '}';
 
+		return $json;
 	}
 
 	public static function CreateTest()
