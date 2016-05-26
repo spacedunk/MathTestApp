@@ -36,9 +36,39 @@ editTestQuestions.controller("TestQuestionsController",function($scope,$http)
      }; 
 });
 
+
 function reOrderList(evt){
   for(i = 0; i < evt.models.length; i++)
   {
     evt.models[i].QuestionNumber = i + 1; 
   }
+}
+
+function previewAsHTML()
+{ 
+  var html = convertTestQuestionListToHTMLString(document.getElementById("TQTexts").childNodes);
+  
+  var wnd = window.open("about:blank", "", "_blank");
+  wnd.document.write(html);
+}
+
+function convertTestQuestionListToHTMLString(list)
+{
+  var html = "<html><body>";
+  for (var i = 0; i < list.length; ++i) 
+  {
+    if(list[i].nodeName == "LI")
+    {
+      for (var j = 0 ; j < list[i].childNodes.length; ++j) {
+        if(list[i].childNodes[j].nodeName == "DIV")
+        {
+          html += list[i].childNodes[j].innerHTML; 
+        }
+      }
+    }
+  }
+
+  html += "</body></html>";
+
+  return html;
 }

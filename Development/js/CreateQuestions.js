@@ -15,6 +15,7 @@ $(document).ready(function(){
             type: 'POST',
             success: function(data)
             {
+                
                 $.post("http://localhost/php/ExamPOC.php",
                 {
                     F: "CreateQuestion",

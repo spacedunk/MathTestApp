@@ -25,8 +25,19 @@
   <script src="js/EditTestQuestions.js"></script>
   <div class="container" id="testInfo" ng-app="EditQuestionsTest"> 
     <div class="row">
-      <label for="testName">Test Name:</label><h1 id="testName"></h1>
-      <label for="className">Class Name:</label><p id="className"></p>
+      <div class="col-md-10">
+        <label for="testName">Test Name:</label><h1 id="testName"></h1>
+        <label for="className">Class Name:</label><p id="className"></p>
+      </div>
+      <div class="col-md-2">
+        <div class="dropdown">
+          <button id="export" class="btn btn-block btn-primary dropdown-toggle" data-toggle="dropdown">Export  <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#" id="asHTML" onclick="previewAsHTML()">As HTML</a></li>
+            <li><a href="#" id="asPDF">As PDF</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div ng-controller="QuestionsController" id="pnlQuestions" class="col-md-4">
@@ -46,20 +57,20 @@
             </div>
           </div>
       </div>
-      <div id="pnlMid" class="col-md-2"></div>
-      <div ng-controller="TestQuestionsController" id="pnlTestQuestions"  class="col-md-6">
+      <div id="pnlMid" class="col-md-1"></div>
+      <div ng-controller="TestQuestionsController" id="pnlTestQuestions"  class="col-md-7">
           <div class="panel panel-default">
             <div class="panel-heading">Test Questions:</div>
             <div class="panel-body">
-              <ul ng-sortable="TestQuestionsConfig" class="list-group">
+              <ul id="TQTexts" ng-sortable="TestQuestionsConfig" class="list-group">
                 <!---->
-                <li class="list-group-item" ng-repeat="x in testquestions">
+                <li  class="list-group-item" ng-repeat="x in testquestions">
                   <div class="list-group-item-heading">
                     <h4 name="Title">{{x.QuestionNumber + ': ' + x.Title}}</h4>
                   </div>
-                  <div class="list-group-item-text">
+                  <div id="TQText" class="list-group-item-text">
                     <p name="Description">{{x.Description}}</p>
-                    <img src={{x.Text}} class ="img-thumbnail img-responsive" alt={{x.Title}}>
+                    <img src="{{x.Text}}" class ="img-thumbnail img-responsive" alt={{x.Title}}>
                   </div>
                 </li>
                 
