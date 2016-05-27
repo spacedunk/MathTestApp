@@ -20,6 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="libs/Sortable/Sortable.js"></script>
     <script src="libs/Sortable/ng-sortable.js"></script>
+    <script src="js/GetPDF.js"></script>
 </head>
 <body>
   <script src="js/EditTestQuestions.js"></script>
@@ -34,7 +35,7 @@
           <button id="export" class="btn btn-block btn-primary dropdown-toggle" data-toggle="dropdown">Export  <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#" id="asHTML" onclick="previewAsHTML()">As HTML</a></li>
-            <li><a href="#" id="asPDF">As PDF</a></li>
+            <li><a href="#" id="asPDF" onclick="getTestPDF()">As PDF</a></li>
           </ul>
         </div>
       </div>

@@ -11,7 +11,7 @@ class Users
 		echo "<table class='table'>";
 		echo "<tr><th>UserID</th><th>Firstname</th><th>Lastname</th></tr>";
 
-		$results = $GLOBALS['MathDB']->ExecuteQuery("SELECT UserID, First,Last from TestTable");
+		$results = $GLOBALS['MathDB']->ExecuteQuery("SELECT UserID, First,Last from Users");
 
 		foreach (new TableRows(new RecursiveArrayIterator($results)) as $key => $value) 
 		{

@@ -52,6 +52,13 @@ function previewAsHTML()
   wnd.document.write(html);
 }
 
+function getTestPDF()
+{
+  var html = convertTestQuestionListToHTMLString(document.getElementById("TQTexts").childNodes);
+  
+  getPDF(html);
+}
+
 function convertTestQuestionListToHTMLString(list)
 {
   var html = "<html><body>";

@@ -6,6 +6,7 @@ require_once "Questions.php";
 require_once "TestQuestions.php";
 require_once "Tests.php";
 require_once 'ImageUploader.php';
+require_once 'ExportToPDF.php';
 
 
 //Since Angular defaults to application/json
@@ -36,8 +37,13 @@ switch ($a)
 	case 'GetTestQuestions':
 		echo TestQuestions::GetTestQuestions($_POST["TID"]);
 		break;
+	case 'CreatePDF':
+		PDFExporter::ExportToPDF($_POST['html_string']);
+		break;
 	default:
 		echo "Function Not Found";
 		break;
 }
+
+
 ?>

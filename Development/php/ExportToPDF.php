@@ -1,29 +1,22 @@
 <?php 
+require_once '../libs/dompdf/dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
-
-function DOMPDF_ExportToPDF($fpath)
+class PDFExporter
 {
-	// instantiate and use the dompdf class
-	$dompdf = new Dompdf();
-	$dompdf->loadHtml(file_get_contents($fpath));
+	public static function ExportToPDF($html)
+	{
+		// instantiate and use the dompdf class
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml($html);
 
-	// (Optional) Setup the paper size and orientation
-	$dompdf->setPaper('A4', 'landscape');
+		// (Optional) Setup the paper size and orientation
+		$dompdf->setPaper('A4', 'landscape');
 
-	// Render the HTML as PDF
-	$dompdf->render();
+		// Render the HTML as PDF
+		$dompdf->render();
 
-	// Output the generated PDF to Browser
-	$dompdf->stream("sample.pdf");
-
-	//$output = $dompdf->output();
-
-	//file_put_contents("sample.pdf", $output);
-
-	//echo "http://localhost/sample.pdf";
+		// Output the generated PDF to Browser
+		$dompdf->stream("sample.pdf");
+	}
 }
-
-
-//Prince_ExportToPDF("SampleTest.html");
-DOMPDF_ExportToPDF("MathMLPOC.html");
 ?>
