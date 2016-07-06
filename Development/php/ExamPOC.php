@@ -38,12 +38,12 @@ switch ($a)
 		echo TestQuestions::GetTestQuestions($_POST["TID"]);
 		break;
 	case 'CreatePDF':
+		error_log(PDFExporter::CleanHTML($_POST['html_string']));
 		PDFExporter::ExportToPDF($_POST['html_string']);
 		break;
 	default:
 		echo "Function Not Found";
 		break;
 }
-
 
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+require_once "ImageUploaderException.php";
+
 class ImageUploader
 {
 	protected $target_dir;
@@ -15,23 +17,22 @@ class ImageUploader
 		$this->target_dir 		= dirname(__DIR__) . "/" . $this->config->FileConfig->FileDirectory . "/";
 		$this->target_file 		= $this->target_dir . $filename;
 		$this->file 			= $fileObject;
-		$this->imageFileType 	= pathinfo($target_dir . basename($file["name"]),PATHINFO_EXTENSION);
+		$this->imageFileType 	= pathinfo($this->target_dir . basename($this->file["name"]),PATHINFO_EXTENSION);
 	}
 
-	private function isFileActualImage()
+	protected function isFileActualImage()
 	{
-		// Check if image file is a actual image or fake image
 	    $check = getimagesize($this->file["tmp_name"]);
 	    if($check === false)  
 	    {
-	        echo "File is not an image.";
+	        throw new NotAnImageException();
 	        $OKToUpload = 0;
 	    }
 	}
 
 	//If incrementOrFail is 1: if the file already exists then create a new file with an incremented number
 	//If incrementOrFail is 0: if the file already exists return false with a message that the file already exists
-	private function exists($incrementOrFail){
+	protected function exists($incrementOrFail){
 		if($incrementOrFail === 1)
 		{
 			$counter = 0;
@@ -61,27 +62,24 @@ class ImageUploader
 		return false;
 	}
 
-	private function isTooBig($sizeLimit)
+	protected function isTooBig($sizeLimit)
 	{
 		//TODO: Check that its an int.
 		// Check file size
-		if ($this->file["size"] > $sizeLimit) {
-		    echo "Sorry, your file is too large.";
-		    $OKToUpload = 0;
-		    return false;
+		if ($this->file["size"] > $sizeLimit)
+		{
+			throw new ImageSizeLimitException($sizeLimit);
+			$OKToUpload = 0;
 		}
-		return true;
 	}
 
-	private function isCorrectFileType()
+	protected function isCorrectFileType()
 	{
-		if(!(in_array($this->imageFileType, $this->config->imageTypes->imageType)))
+		if(!(in_array($this->imageFileType, (array)$this->config->ImageTypes->ImageType)))
 		{
-    		echo "Sorry, " . $this->imageFileType . " is not a JPG, JPEG, PNG or GIF.";
+    		throw new IncorrectImageTypeException($this->imageFileType); 
     		$OKToUpload = 0;
-    		return false;
 		}
-		return true;
 	}
 
 	public function UploadImage($incrementOrFail = 1)

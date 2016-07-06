@@ -43,5 +43,4 @@ class TestQuestions
 		$results = $GLOBALS['MathDB']->ExecuteQuery("CALL Test_Insert('$title','$author','$class','$description','$date');");
 	}
 }
-
 ?>
