@@ -14,9 +14,9 @@ class IsImageTest extends PHPUnit_Framework_TestCase
 
 	public function testTestImageAttributes()
 	{
-		$this->assertEquals("BankStatement.jpg",$this->test_images->TestImages->TestImage[0]["name"]);
-		$this->assertEquals(20000,$this->test_images->TestImages->TestImage[0]["size"]);
-		$this->assertEquals('/home/ekeehn/Code Work/MathTestApp/POC/Source/Development/BankStatement.jpg',$this->test_images->TestImages->TestImage[0]["tmp_name"]);
+		$this->assertEquals("BankStatement.jpg",$this->test_images->TestImage->name);
+		$this->assertEquals(20000,(integer)$this->test_images->TestImage->size);
+		$this->assertEquals('/home/ekeehn/Code Work/MathTestApp/POC/Source/Development/BankStatement.jpg',$this->test_images->TestImage->tmp_name);
 
 	}
 

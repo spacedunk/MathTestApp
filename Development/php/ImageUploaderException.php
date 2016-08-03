@@ -54,4 +54,13 @@ class ImageSizeLimitException extends ImageUploadExceptionBase
 		parent::__construct("File size has exceeded the limit of " . $imageSizeLimit);
 	}
 }
+
+class InitializationFailureException extends ImageUploadExceptionBase
+{
+	function __construct($failedVariable)
+	{
+		parent::__construct("Image Uploader object not initialized correctly. Missing " . $failedVariable . " Please check the file and try again.");
+	}
+
+}
 ?>

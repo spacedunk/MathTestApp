@@ -17,7 +17,39 @@ class ImageUploader
 		$this->target_dir 		= dirname(__DIR__) . "/" . $this->config->FileConfig->FileDirectory . "/";
 		$this->target_file 		= $this->target_dir . $filename;
 		$this->file 			= $fileObject;
-		$this->imageFileType 	= pathinfo($this->target_dir . basename($this->file["name"]),PATHINFO_EXTENSION);
+		$this->imageFileType 	= pathinfo($this->target_dir . basename($this->file->name),PATHINFO_EXTENSION);
+
+		$variableThatsNotInitialized = $this->checkInitialized();
+
+		if($variableThatsNotInitialized != "") throw new InitializationFailureException($variableThatsNotInitialized);
+	}
+
+	private function checkInitialized()
+	{
+		if($this->config->asXML() == "")
+		{
+			return "config";
+		}
+		else if ($this->target_dir == "")
+		{
+			return "target_dir";
+		}
+		else if($this->target_file == "")
+		{
+			return "target_file";
+		}
+		else if($this->file == "")
+		{
+			return "file";
+		}
+		else if($this->imageFileType == "")
+		{
+			return "imageFileType";
+		}
+		else
+		{
+			return "";
+		}
 	}
 
 	protected function isFileActualImage()
